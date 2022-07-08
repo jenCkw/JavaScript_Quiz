@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+body {
+  background: linear-gradient(0deg, #85f6b8 100%, #8ed9ebd9 85%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 2Opx;
+}
+
+p {
+  color: gray;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+label {
+  color: gray;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.action_btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.action_btn button {
+  width: 100px;
+  height: 50px;
+  color: white;
+  justify-content: center;
+  background-color: green;
+  text-align: center;
+  margin: auto;
+  border: none;
+}
+input {
+  outline: none;
+  border: solid grey 1px;
+  padding: 5px;
+  height: 40px;
+  border: solid 1px red;
+}
+
+span {
+  color: red;
+  font-size: 12px;
+}
+
+.container {
+  width: 34%;
+  height: 530px;
+  background-color: white;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.container .form_container {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.container .form_container .form_subscribe_text {
+  height: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  align-content: center;
+}
+.container .form_container .form_subscribe_form {
+  height: 300px;
+}
+
+.container .form_container .form_input {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.form_question_text {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* espace questions */
+
+.form_input-question {
+  border: 1px solid #dddddd;
+  display: flex;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.questions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar {
+  background-color: grey;
+  width: 100%;
+  height: 8px;
+}
+
+.progress-bar-fil {
+  background-color: green;
+  height: 100%;
+  width: 50%;
+}
+
+.form_action {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.form-action-button {
+  width: 100%;
+  /* display: flex; */
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  color: white;
+  justify-content: center;
+  background-color: green;
+  text-align: center;
+  margin: auto;
+  border: none;
+}
+
+#form_sub_btn-quitter {
+  background-color: rgb(232, 122, 81);
+}
+
+#form_sub_btn-suivant {
+  background-color: rgba(2, 138, 61, 0.42);
+}
