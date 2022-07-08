@@ -74,7 +74,7 @@ span {
   height: 90%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
 }
 .container .form_container .form_subscribe_text {
   height: 150px;
@@ -147,14 +147,13 @@ span {
 .form-action-button {
   width: 100%;
   /* display: flex; */
-  justify-content: center;
-  width: 100px;
-  height: 50px;
+  /* justify-content: center; */
+  width: 158px;
+  height: 41px;
   color: white;
-  justify-content: center;
   background-color: green;
   text-align: center;
-  margin: auto;
+  /* margin: auto; */
   border: none;
 }
 
@@ -164,4 +163,28 @@ span {
 
 #form_sub_btn-suivant {
   background-color: rgba(2, 138, 61, 0.42);
+}
+
+.container-result {
+  height: 80%;
+  width: 40%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-validation {
+  width: 158px;
+  height: 41px;
+  color: white;
+  background-color: green;
+  text-align: center;
+  border: none;
+}
+
+.result-icon {
+  width: 70%;
 }
