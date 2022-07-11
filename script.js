@@ -1,42 +1,19 @@
-// class UserConnexion
-// {
-//     _email;
-//     _name;
-
-//     constructor(email,name){
-//         this._email = email;
-//         this._name = name;
-//     }
-
-//     get email(){
-
-//         return this._email;
-//     }
-
-//     get name(){
-//         return this._name;
-//     }
-//     save(){
-
-//     }
-// }
-
 // validation
 
-let form = document.getElementById("form");
+let form = document.getElementById("btn-action");
+let nom = document.getElementById("name");
+let email = document.getElementById("email");
+let div_nom = document.querySelector(".error_message");
 let error;
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("click", function (e) {
   e.preventDefault();
 
-  let name = document.getElementById("name");
-  let email = document.getElementById("email");
-
-  if (name.value === "") {
-    error.push("Veuillez renseigner votre nom");
+  if (nom?.value === "") {
+    alert("kkkkk");
   }
-  if (email.value === "") {
-    error.push("Veuillez renseigner votre nom");
+  if (email?.value === "") {
+    alert("kkkkk");
   }
 
   let message = document.getElementById("error_message");

@@ -21,16 +21,16 @@
         <div class="">
           <form id="form" action="">
             <div class="form_input">
-              <label id="name" for="">Nom</label>
+              <label for="">Nom</label>
               <input type="text" name="name" id="name" />
               <br />
-              <span
+              <span id="error_message"
                 >N'oubliez pas de renseigner votre nom avant de commencer le
                 quiz</span
               >
             </div>
             <div class="form_input">
-              <label id="emai" for="">Email</label>
+              <label for="">Email</label>
               <input type="text" name="email" id="email" />
               <br />
               <span
@@ -39,7 +39,9 @@
               >
             </div>
             <div class="action_btn">
-              <button type="submit" value="validation">Commencer</button>
+              <button id="btn-action" type="submit" value="validation">
+                Commencer
+              </button>
             </div>
           </form>
         </div>
