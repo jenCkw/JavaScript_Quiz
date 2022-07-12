@@ -1,4 +1,4 @@
-export function question_template(question) {
+export function question_template(question, questionlength) {
   var choix_text = "";
 
   question.choix.map((choix, index) => {
@@ -20,7 +20,7 @@ export function question_template(question) {
     </div>
     <div class="question-container">
       <div class="questions">
-        <span>question 1/2</span>
+        <span>question 1/${questionlength} </span>
         <span>30</span>
       </div>
       <div class="progress-bar">

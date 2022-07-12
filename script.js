@@ -39,22 +39,28 @@ btnSubmit.addEventListener("click", onSubmit);
 
 class QUIZ {
   /**
-   * tableau des questions
-   * @param {*} questions
+   * tableau des questions contenant des objets de la classe Question
+   * @param {Array} questions
    */
   constructor(questions) {
+    //indice de la question actuellement affiché  dans le quiz
+    //(la question provient du tableau passé au constructeur)
     this.questionIndex = 0;
     this.questions = questions;
   }
 
   /**
-   *
+   * Rétourne un Objet de type Question en fonction de l'index qui est actuellement affiché
    * @returns {Question}
    */
   getQuestionbyIndex() {
     return this.questions[this.questionIndex];
   }
 
+  /**
+   * Rétourne true ou false selon que le quiz est à la fin ou pas
+   * @returns {Boolean}
+   */
   isEnd() {
     if (this.questionIndex === this.questions.length) {
       return true;
@@ -63,12 +69,19 @@ class QUIZ {
       // le jeu continue
     }
   }
+  /**
+   * élèment dans lequel sera affiché le quiz
+   * @param {HTMLDivElement} form_container
+   */
   showQuestion(form_container) {
     if (this.isEnd()) {
       // show result
     } else {
       //console.log(form_container);
-      form_container.innerHTML = question_template(this.getQuestionbyIndex());
+      form_container.innerHTML = question_template(
+        this.getQuestionbyIndex(),
+        this.questions.length
+      );
     }
 
     // vérifier si le quiz ne pas à la fin
@@ -100,17 +113,112 @@ class Question {
 
 let questions = [
   new Question(
-    "JSON signifie quoi?",
+    "Javascript is an ______ language ?",
+    ["Object-Oriented", "Object-Based", "Procedural", "None of the above"],
+    "Object-Oriented"
+  ),
+  new Question(
+    "Which of the following keywords is used to define a variable in Javscript ?",
+    [("var", "let", "Both A and B", "None of the above")],
+    "Both A and B"
+  ),
+  new Question(
+    "How do we write a comment in javscript?",
+    ["/**/", "//", "#", "$$"],
+    "//"
+  ),
+  new Question(
+    "What will be the output of the following code snippet: print(typeof(NaN); ?"[
+      ("object", "Number", "String", "None of the above")
+    ],
+    "Number"
+  ),
+  new Question(
+    "JSON stands for what?",
     [
       "Javascript Object Notation",
       "Java Script Number",
       "JavaScript Script Notice",
+      "JavaScript Script Note",
     ],
     "Javascript Object Notation"
   ),
   new Question(
-    "Comment declarer une variable en js",
-    ["let", "Java Script Number", "JavaScript Script Notice"],
-    "Javascript Object Notation"
+    "How to declare a variable in js ?",
+    ["let", "echo", "print", "console.log()"],
+    "let"
+  ),
+  new Question(
+    "which of the following methods is used to access HTML elements using JavaScript ?",
+    [
+      "getElementbyId()",
+      "getElementbyClassName()",
+      "Both A and B",
+      "None of the above",
+    ],
+    "Both A and B"
+  ),
+  new Question(
+    "What keywords is used to chek whether a given property is valid or not ?",
+    ["in", "is in", "xists", "lies"],
+    "in"
+  ),
+  new Question(
+    "How can a datatype be declared to be a constant type ?",
+    ["cont", "var", "let", "constant"],
+    "const"
+  ),
+  new Question(
+    "Which of the following methods can be used to display data in some form using Javascript ?",
+    [
+      "document.writer()",
+      "console.log()",
+      "window.alert()",
+      "all of the above",
+    ],
+    "all of the above"
+  ),
+  new Question(
+    "What does the 'toLocateString() method do in JS ?",
+    [
+      "Returns a localised object representation",
+      "Returns a parsed string",
+      "Returns a localised string representation of an object",
+      "Non of the above",
+    ],
+    "Returns a localised string representation of an object"
+  ),
+  new Question(
+    "What does the Javascript 'debugger' statement do ?",
+    [
+      "it will debug all the errors in the programm at runtime",
+      "it acts as a beakpoint in a program",
+      "it will debug error in the curennt statement if any",
+      "all of the above",
+    ],
+    "it acts as a breakpoint in a program"
+  ),
+  new Question(
+    "Upon encountering empty statements, what does the Javascript interpreter do?"[
+      ("Throws an error",
+      "Ignores the statements",
+      "Gives a warning",
+      "None of the above")
+    ],
+    "Ignores the statements"
+  ),
+  new Question(
+    "What is the use of the <noscript> tag in Javscrpt ?"[
+      ("The contents are displayed by non-JS-based browsers",
+      "Clears all the cookies and cache",
+      "Both A and B",
+      "None of the above")
+    ],
+    "The contents are displayed by non-JS-based browsers"
+  ),
+  new Question(
+    "How to stop an interval timer in javascript ?",
+    ["clearInterval", "clearTimer", "intervalOver", "None of the above"],
+    "clearInterval"
   ),
 ];
