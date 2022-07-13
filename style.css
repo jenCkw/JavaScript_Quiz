@@ -37,8 +37,8 @@ label {
   align-items: center;
 }
 .action_btn button {
-  width: 100px;
-  height: 50px;
+  width: 130px;
+  height: 40px;
   color: white;
   justify-content: center;
   background-color: green;
@@ -70,7 +70,7 @@ span {
   justify-content: center;
 }
 .container .form_container {
-  width: 90%;
+  width: 70%;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -150,8 +150,8 @@ span {
   /* justify-content: center; */
   width: 158px;
   height: 41px;
-  color: white;
-  background-color: green;
+  /* color: white;
+  background-color: #ec880c; */
   text-align: center;
   /* margin: auto; */
   border: none;
@@ -161,8 +161,11 @@ span {
   background-color: rgb(232, 122, 81);
 }
 
-#form_sub_btn-suivant {
+#form_sub_btn-suivant:disabled {
   background-color: rgba(2, 138, 61, 0.42);
+}
+#form_sub_btn-suivant {
+  background-color: rgba(2, 138, 61, 0.986);
 }
 
 .container-result {

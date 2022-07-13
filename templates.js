@@ -5,7 +5,7 @@ export function question_template(question, questionlength) {
     choix_text += `
       <div class="form_input-question">
               <div>
-                <input type="radio" name="radio" id="choix_${index}" />
+                <input type="radio" name="radio" id="choix_${index}" data-response="${choix}" />
               </div>
               <div>
                 <label for="choix_${index}">${choix}</label>
@@ -34,11 +34,25 @@ export function question_template(question, questionlength) {
           <button id="form_sub_btn-quitter" class="form-action-button">
             Quitter
           </button>
-          <button id="form_sub_btn-suivant" class="form-action-button">
+          <button disabled id="form_sub_btn-suivant" class="form-action-button">
             Suivant
           </button>
         </div>
       </form>
+    </div>
+  `;
+}
+
+export function resultat_template(user) {
+  return `
+    <div class="container-result">
+      <h2>${user.nom}</h2>
+      <p>${user.mail}</p>
+      <div class="result-icon"></div>
+      <p>14/15</p>
+      <a href="/">
+        <button class="action-validation">Acueuil</button>
+      </a>
     </div>
   `;
 }

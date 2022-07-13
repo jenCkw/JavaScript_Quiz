@@ -1,4 +1,4 @@
-import { question_template } from "./templates.js";
+import { question_template, resultat_template } from "./templates.js";
 //INDEX.HTML=>VALIDATION FORM ET INITIALISATION DU QUIZ
 
 const nom = document.getElementById("name");
@@ -21,6 +21,14 @@ function onSubmit(e) {
   } else {
     nomErrorMsg.style.display = "none";
     emailErrorMsg.style.display = "none";
+
+    let userdata = {
+      nom: nom.value,
+      mail: email.value,
+    };
+    localStorage.setItem("userdata", JSON.stringify(userdata));
+    // console.log(userdata);
+
     //console.log(nomErrorMsg);
     // if (email.value.match(mail_format)) {
     //   console.log(nom.value, email.value);
@@ -82,6 +90,11 @@ class QUIZ {
         this.getQuestionbyIndex(),
         this.questions.length
       );
+      this.radio_btns = document.querySelectorAll('[type="radio"]');
+      this.next_btn = document.querySelector("#form_sub_btn-suivant");
+      this.cancel_btn = document.querySelector("#form_sub_btn-quitter");
+      this.events();
+      //console.log(radio_btns);
     }
 
     // vérifier si le quiz ne pas à la fin
@@ -94,6 +107,29 @@ class QUIZ {
     //ensuite appel la méthode showquestion
   }
   // à créer une méthode qui va gérer le clique sur l'une des réponses
+
+  events() {
+    this.radio_btns.forEach((radio) => {
+      radio.addEventListener("click", (e) => {
+        //removeattribute
+        this.next_btn.removeAttribute("disabled");
+      });
+    });
+    this.next_btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let selectedRadio = document.querySelector('[name="radio"]');
+      console.log(selectedRadio);
+    });
+    this.cancel_btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      this.showResult();
+    });
+  }
+
+  showResult() {
+    let userdata = JSON.parse(localStorage.getItem("userdata"));
+    form_container.innerHTML = resultat_template(userdata);
+  }
 }
 
 class Question {
@@ -128,9 +164,8 @@ let questions = [
     "//"
   ),
   new Question(
-    "What will be the output of the following code snippet: print(typeof(NaN); ?"[
-      ("object", "Number", "String", "None of the above")
-    ],
+    "What will be the output of the following code snippet: print(typeof(NaN); ?",
+    ["object", "Number", "String", "None of the above"],
     "Number"
   ),
   new Question(
