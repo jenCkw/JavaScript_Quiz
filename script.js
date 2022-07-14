@@ -109,6 +109,7 @@ class QUIZ {
         this.questions.length,
         this.questionIndex
       );
+      this.clearAllInterval();
       this.startTimer();
       // récupère les elts après leurs insertion dans le dom
       this.radio_btns = document.querySelectorAll('[type="radio"]');
