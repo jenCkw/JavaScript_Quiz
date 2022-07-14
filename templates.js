@@ -24,7 +24,7 @@ export function question_template(question, questionlength, questionIdx) {
     <div class="question-container">
       <div class="questions">
         <span>question ${questionIdx}/${questionlength} </span>
-        <span>30</span>
+        <span id="timerInt">30</span>
       </div>
       <div class="progress-bar">
         <div class="progress-bar-fil"></div>

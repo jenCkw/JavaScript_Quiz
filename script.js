@@ -109,6 +109,7 @@ class QUIZ {
         this.questions.length,
         this.questionIndex
       );
+      this.startTimer();
       // récupère les elts après leurs insertion dans le dom
       this.radio_btns = document.querySelectorAll('[type="radio"]');
       this.next_btn = document.querySelector("#form_sub_btn-suivant");
@@ -126,10 +127,24 @@ class QUIZ {
     // sinon on affiche le résultat
   }
 
+  //progress bar
   startTimer() {
+    let timeleft = 60;
+    let totaltime = 60;
+    let timerInt = document.querySelector("#timerInt");
     setInterval(() => {
-      console.log(this.progress_bar);
-      this.progress_bar.style.width = `${this.timer--}%`;
+      let progresswidth = Math.ceil((timeleft * 100) / totaltime); //arrondit le resultat des calcls ici
+      this.progress_bar.style.width = progresswidth + "%"; //la ligne qui fait bouger le progessbar
+      timeleft--; //decremente de 1 sur chauque seconde qui bouge
+      timerInt.innerHTML = timeleft;
+
+      //si l'index est egal à 0, on passe à la question suivante, on efface la question qui etait en cours d'affichage et on passe à la question suivante
+      if (timeleft === 0) {
+        this.questionIndex = this.questionIndex + 1;
+        timerInt.innerHTML = "";
+        this.clearAllInterval();
+        this.showQuestion();
+      }
     }, 1000);
   }
   // à créer une méthode qui va gérer le clique sur l'une des réponses
