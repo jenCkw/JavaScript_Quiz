@@ -4,13 +4,16 @@ export function question_template(question, questionlength, questionIdx) {
   question.choix.map((choix, index) => {
     choix_text += `
       <div class="form_input-question">
-              <div>
-                <input type="radio" name="radio" id="choix_${index}" value="${choix}" data-response="${choix}" />
-              </div>
-              <div>
-                <label for="choix_${index}">${choix}</label>
-              </div>
-        </div>
+        <input
+          type="radio"
+          name="radio"
+          id="choix_${index}"
+          value="${choix}"
+          data-response="${choix}"
+        />
+
+        <label for="choix_${index}">${choix}</label>
+      </div>
     `;
   });
 

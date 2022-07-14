@@ -254,6 +254,14 @@ span {
   color: red;
 }
 
+.form_input-question.selected {
+  border: 1px solid #028a3d;
+}
+
+input[type="radio"] {
+  accent-color: green;
+}
+
 @media screen and (max-width: 430px) {
   .wrapper {
     height: 100%;

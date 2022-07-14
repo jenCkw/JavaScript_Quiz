@@ -71,7 +71,7 @@ class QUIZ {
     //indice de la question actuellement affiché  dans le quiz
     //(la question provient du tableau passé au constructeur)
     this.questionIndex = 0;
-    this.questions = questions;
+    this.questions = questions.sort(() => Math.random() - 0.5); //recuperer les questions d'une maniere aleatoire.
     this.score = 0;
     this.form_container = document.querySelector(".form_container");
     this.timer = 60;
@@ -137,6 +137,12 @@ class QUIZ {
   events() {
     this.radio_btns.forEach((radio) => {
       radio.addEventListener("click", (e) => {
+        document
+          .querySelector(".form_input-question.selected")
+          ?.classList.remove("selected"); // enleve le comportement(colorier en vert) aux input non-selectionnés
+
+        radio.parentElement.classList.add("selected"); // applique le le comportement(colorier en vert) à l'input selectionné
+
         //removeattribute
         this.next_btn.removeAttribute("disabled");
       });
