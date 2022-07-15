@@ -338,7 +338,7 @@ let questions = [
     "The contents are displayed by non-JS-based browsers"
   ),
   new Question(
-    "How to stop an interval timer in javascript ?",
+    "Hows to stop an interval timer in javascript ?",
     ["clearInterval", "clearTimer", "intervalOver", "None of the above"],
     "clearInterval"
   ),
