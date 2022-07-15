@@ -1,3 +1,4 @@
+//3 fonctions qui retourne que du html
 import {
   question_template,
   resultat_template,
@@ -148,8 +149,10 @@ class QUIZ {
       }
     }, 1000);
   }
-  // à créer une méthode qui va gérer le clique sur l'une des réponses
 
+  /**
+   * à créer une méthode qui va gérer le clique sur l'une des réponses
+   */
   events() {
     this.radio_btns.forEach((radio) => {
       radio.addEventListener("click", (e) => {
@@ -159,7 +162,7 @@ class QUIZ {
 
         radio.parentElement.classList.add("selected"); // applique le le comportement(colorier en vert) à l'input selectionné
 
-        //removeattribute
+        //removeattribute pour reactiver le boutton vert quand on clique sur la reponse
         this.next_btn.removeAttribute("disabled");
       });
     });
@@ -172,12 +175,17 @@ class QUIZ {
       e.preventDefault();
       let choix = e.target.radio.value;
 
+      //compare le choix de la reponse et incremente le score quand la reponse est correcte
       if (this.getQuestionbyIndex().reponse === choix) {
         this.score++;
       }
+
+      //incremente l'index des question
       this.questionIndex = this.questionIndex + 1;
       this.showQuestion();
     });
+
+    //
     this.cancel_btn.addEventListener("click", (e) => {
       e.preventDefault();
       this.showResult();
@@ -186,7 +194,7 @@ class QUIZ {
 
   showResult() {
     let userdata = JSON.parse(localStorage.getItem("userdata"));
-    let halfquest = Math.ceil(this.questions.length / 2);
+    let halfquest = Math.ceil(this.questions.length / 2); //divise la taille des questions et arrondit
     if (this.score < halfquest) {
       form_container.innerHTML = result_fail(userdata, this.score);
     } else {
