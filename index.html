@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz-App-Kda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Inter:wght@300;700&family=Lexend+Deca&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <div class="wrapper">
+      <div class="container">
+        <div class="form_container">
+          <div class="form_subscribe_text">
+            <h1>JavaScript Quiz</h1>
+            <p>
+              Evaluez vos compétences en javascript en répondant aux questions
+              que nous avons spécialement sélectionnées pour vous.
+              <br />c'est fun et c'est gratuit!
+            </p>
+          </div>
+          <div class="">
+            <form id="form" action="">
+              <div class="form_input">
+                <label for="">Nom</label>
+                <input type="text" name="name" id="name" placeholder="Saisisssez votre nom" />
+                <span id="error_message"></span>
+              </div>
+              <div class="form_input">
+                <label for="">Email</label>
+                <input type="text" name="email" id="email" placeholder="Saisissez un mail valide" />
+                <span id="error_msg-email"></span>
+              </div>
+              <div class="action_btn">
+                <button id="btn-action" type="submit" value="validation">
+                  Commencer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <script src="script.js" type="module"></script>
+</body>
+
+</html>
