@@ -2,7 +2,7 @@
 import {
   question_template,
   resultat_template,
-  result_fail,
+  // result_fail,
 } from "./templates.js";
 //INDEX.HTML=>VALIDATION FORM ET INITIALISATION DU QUIZ
 
@@ -20,6 +20,7 @@ function onSubmit(e) {
   //console.log("okd");
 
   let form_bolean = true;
+
   if (nom?.value === "") {
     form_bolean = false;
     nomErrorMsg.style.display = "block";
@@ -29,7 +30,11 @@ function onSubmit(e) {
     form_bolean = false;
     nomErrorMsg.style.display = "block";
     nomErrorMsg.innerHTML = "* Taille inferieur à 2";
-  } else if (email?.value === "") {
+  } else {
+    nomErrorMsg.style.display = "none";
+  }
+
+  if (email?.value === "") {
     form_bolean = false;
     nomErrorMsg.style.display = "block";
     emailErrorMsg.style.display = "block";
@@ -41,7 +46,6 @@ function onSubmit(e) {
     emailErrorMsg.style.display = "block";
     emailErrorMsg.innerHTML = "*Votre email n'est pas valide";
   } else {
-    nomErrorMsg.style.display = "none";
     emailErrorMsg.style.display = "none";
   }
 
@@ -86,6 +90,14 @@ class QUIZ {
     return this.questions[this.questionIndex];
   }
 
+  isBeforeLast() {
+    if (this.questionIndex === this.questions.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   /**
    * Rétourne true ou false selon que le quiz est à la fin ou pas
    * @returns {Boolean}
@@ -107,13 +119,13 @@ class QUIZ {
     } else {
       this.form_container.innerHTML = question_template(
         this.getQuestionbyIndex(),
-        this.questions.length,
-        this.questionIndex
+        this.questions.length + 1,
+        this.questionIndex + 1
       );
       this.clearAllInterval();
       this.startTimer();
       // récupère les elts après leurs insertion dans le dom
-      this.radio_btns = document.querySelectorAll('[type="radio"]');
+      this.radio_btns = document.querySelectorAll(".form_input-question");
       this.next_btn = document.querySelector("#form_sub_btn-suivant");
       this.cancel_btn = document.querySelector("#form_sub_btn-quitter");
       //formulaire d'affichage des question
@@ -122,6 +134,11 @@ class QUIZ {
       //lance la methode du timer
       // this.startTimer();
       this.events();
+
+      if (this.isBeforeLast()) {
+        document.querySelector("#form_sub_btn-suivant").textContent =
+          "Terminer";
+      }
     }
 
     // vérifier si le quiz ne pas à la fin
@@ -160,8 +177,8 @@ class QUIZ {
           .querySelector(".form_input-question.selected")
           ?.classList.remove("selected"); // enleve le comportement(colorier en vert) aux input non-selectionnés
 
-        radio.parentElement.classList.add("selected"); // applique le le comportement(colorier en vert) à l'input selectionné
-
+        radio.classList.add("selected"); // applique le le comportement(colorier en vert) à l'input selectionné
+        radio.querySelector("input").checked = true;
         //removeattribute pour reactiver le boutton vert quand on clique sur la reponse
         this.next_btn.removeAttribute("disabled");
       });
@@ -195,11 +212,11 @@ class QUIZ {
   showResult() {
     let userdata = JSON.parse(localStorage.getItem("userdata"));
     let halfquest = Math.ceil(this.questions.length / 2); //divise la taille des questions et arrondit
-    if (this.score < halfquest) {
-      form_container.innerHTML = result_fail(userdata, this.score);
-    } else {
-      form_container.innerHTML = resultat_template(userdata, this.score);
-    }
+    form_container.innerHTML = resultat_template(
+      userdata,
+      this.score,
+      this.score > halfquest
+    );
   }
 
   /**
@@ -232,11 +249,11 @@ class Question {
 }
 
 let questions = [
-  new Question(
-    "Javascript is an ______ language ?",
-    ["Object-Oriented", "Object-Based", "Procedural", "None of the above"],
-    "Object-Oriented"
-  ),
+  // new Question(
+  //   "Javascript is an ______ language ?",
+  //   ["Object-Oriented", "Object-Based", "Procedural", "None of the above"],
+  //   "Object-Oriented"
+  // ),
   new Question(
     "Which of the following keywords is used to define a variable in Javscript ?",
     ["var", "let", "Both A and B", "None of the above"],
@@ -284,7 +301,7 @@ let questions = [
   ),
   new Question(
     "How can a datatype be declared to be a constant type ?",
-    ["cont", "var", "let", "constant"],
+    ["const", "var", "let", "constant"],
     "const"
   ),
   new Question(
@@ -313,9 +330,9 @@ let questions = [
       "it will debug all the errors in the programm at runtime",
       "it acts as a beakpoint in a program",
       "it will debug error in the curennt statement if any",
-      "all of the above",
+      "all of tquestion_templatehe above",
     ],
-    "it acts as a breakpoint in a program"
+    "it acts as a beakpoint in a program"
   ),
   new Question(
     "Upon encountering empty statements, what does the Javascript interpreter do?",

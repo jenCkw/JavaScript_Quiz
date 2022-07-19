@@ -46,13 +46,16 @@ export function question_template(question, questionlength, questionIdx) {
   `;
 }
 
-export function resultat_template(user, score) {
+//conditio ? vrai : faux (condition ternaire) , parametre isSucces(bolean) qui permet de remplacer les icones dans les deux cas
+export function resultat_template(user, score, isSucces) {
   return `
     <div class="container-result">
       <h2>${user.nom}</h2>
       <p>${user.mail}</p>
-      <div class="result-icon">
-      <i class="fa-solid fa-check"></i>
+      <div class="result-icon ${isSucces ? "" : "error_result"}"> 
+      <i class="fa-solid fa-check c"></i>
+      <i class="fa-solid fa-xmark x"></i> 
+
       </div>
       <p>${score}/15</p>
       <a href="/">
@@ -62,18 +65,18 @@ export function resultat_template(user, score) {
   `;
 }
 
-export function result_fail(user, score) {
-  return `
-    <div class="container-result">
-      <h2>${user.nom}</h2>
-      <p>${user.mail}</p>
-      <div class="result-icon error_result">
-        <i class="fa-solid fa-xmark"></i> 
-      </div>
-      <p>${score}/15</p>
-      <a href="/">
-        <button class="action-validation">Acueuil</button>
-      </a>
-    </div>
-  `;
-}
+// export function result_fail(user, score) {
+//   return `
+//     <div class="container-result">
+//       <h2>${user.nom}</h2>
+//       <p>${user.mail}</p>
+//       <div class="result-icon error_result">
+//         <i class="fa-solid fa-xmark"></i>
+//       </div>
+//       <p>${score}/15</p>
+//       <a href="/">
+//         <button class="action-validation">Acueuil</button>
+//       </a>
+//     </div>
+//   `;
+// }

@@ -37,6 +37,7 @@ h1 {
   font-weight: 500;
   font-size: 22px;
   line-height: 27px;
+  font-weight: bolds;
   /* identical to box height */
 
   text-align: center;
@@ -259,6 +260,17 @@ span {
   color: red;
 }
 
+.result-icon .x {
+  display: none;
+}
+
+.result-icon.error_result .c {
+  display: none;
+}
+
+.result-icon.error_result .x {
+  display: inline;
+}
 .form_input-question.selected {
   border: 1px solid #028a3d;
 }
